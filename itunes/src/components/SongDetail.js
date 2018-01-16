@@ -2,6 +2,12 @@ import React from 'react';
 
 class SongDetail extends React.Component {
 
+componentDidUpdate() {
+  if(this.refs.audio) {
+    this.refs.audio.pause();
+    this.refs.audio.load();
+  }
+}
 
   render(){
     if(!this.props.song) return null;
@@ -16,9 +22,9 @@ class SongDetail extends React.Component {
         <h5>
           Chart Position: {parseInt(this.props.index) + 1}
           <hr />
-          Preview: <audio controls>
+          Preview: <audio ref="audio" controls>
             <source src={this.props.song.link[1].attributes.href} type="audio/ogg"/>
-            <source src={this.props.song.link[1].attributes.href} type="audio/mpeg"/>
+            {/* <source src={this.props.song.link[1].attributes.href} type="audio/mpeg"/> */}
           </audio>
           <hr />
         </h5>
