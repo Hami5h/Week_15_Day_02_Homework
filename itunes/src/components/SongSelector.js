@@ -20,7 +20,7 @@ class SongSelector extends React.Component {
   render() {
     const options = this.props.songs.map((song, index) => {
       return(
-          <option key={index} value ={index}>{song['im:artist'].label}</option>
+          <option key={index} value ={index}>{song.title.label}</option>
       );
     });
 
